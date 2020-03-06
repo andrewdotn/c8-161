@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eu
+
+node --version
+NODE_V8_COVERAGE=coverage node -r @babel/register src/foo.js
+jq . $(ls -t coverage/*.json | head -n1) | grep srcfoo
